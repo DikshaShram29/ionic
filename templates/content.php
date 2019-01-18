@@ -1,24 +1,22 @@
 <html>
-<head>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-<link href="semantic/dist/semantic.min.css" rel="stylesheet">
-<script src="jquery-3.1.1.min.js"></script>
-<script src="semantic/dist/semantic.min.js"></script>
-<link href="css/style.css" rel="stylesheet">
+  <head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link href="semantic/dist/semantic.min.css" rel="stylesheet">
+    <script src="jquery-3.1.1.min.js"></script>
+    <script src="semantic/dist/semantic.min.js"></script>
+    <link href="css/style.css" rel="stylesheet">
 
-<style>
-  .content {
-    display: block;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-</style>
-
-</head>
-<body >
-
+    <style>
+      .content {
+        display: block;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+<body>
 <script>
     $(function () {
         $('#menu a').on('click', function (e) {
@@ -83,6 +81,12 @@ switch($type)
   </div>
   </div>
 
+  <?php
+$type=$_SESSION['type'];
+switch($type)
+{
+  case 0:
+?>
   <div class="item txtsizegrid">
   <div class="ui left icon input">
     <i class="fas fa-chalkboard-teacher"></i>
@@ -147,11 +151,15 @@ switch($type)
     <i class="fas fa-chart-pie"></i>
     &nbsp;&nbsp;Reporting
   </div> 
+
     <div class="menu">
       <a class="item">View reports of trainers</a>
       <a class="item">View reports of students</a>
       <a class="item">Check student feedbacks</a>
-    </div>
+      </div>
+<?php
+}
+?>
 </div>
 </div>
 <div class="content" id="content" style="width:100em; font-size: 1rem; text-align:center;"> </div>
