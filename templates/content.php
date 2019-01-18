@@ -22,35 +22,52 @@
 <script>
     $(function () {
         $('#menu a').on('click', function (e) {
-            e.preventDefault();
-            var page = $(this).attr('href');
-            $('#content').load("../templates/"+page);
+        e.preventDefault();
+        var page = $(this).attr('href');
+          $('#content').load("../templates/"+page);
         });
     });
 
     $(function () {
         var redirect = <?php echo (!empty($redirect) ? json_encode($redirect) : '"e"'); ?>;
         if (redirect !== "e" && redirect.length > 2) {
-          $('#content').load("../templates/"+redirect+".php");
+         $('#content').load("../templates/"+redirect+".php");
         }
     });
 </script>
-
 <div class="ui horizontal menu">
+  <div class="ui vertical menu left" style="width:15em; font-size: 1.5rem; text-align: left;">
+  <?php
+   $type=$_SESSION['type'];
+   switch($type)
+   {
+     case 0:
+     case 1:
+     case 2:
+     case 3:
+  ?>
+    <div class="item txtsizegrid">
+      <div class="ui left icon input">
+        <i class="fas fa-home"></i>
+        &nbsp;&nbsp; 
+        Home
+      </div> 
+      <div class="menu" id="menu">
+        <a href="profile.php" class="item">Profile</a>
+        <a class="item">Edit Profile</a>
+        <?php
+          }
+    ?>
+      </div>
+    </div>
 
-<div class="ui vertical menu left" style="width:15em; font-size: 1.5rem; text-align: left;">
-
-<div class="item txtsizegrid">
-  <div class="ui left icon input">
-    <i class="fas fa-home"></i>
-    &nbsp;&nbsp; 
-    Home
-  </div> 
-  <div class="menu" id="menu">
-    <a href="profile.php" class="item">Profile</a>
-    <a class="item">Edit Profile</a>
-  </div>
-  </div>
+  <?php
+$type=$_SESSION['type'];
+switch($type)
+{
+  case 0:
+  case 2:
+ ?>
 
 <div class="item txtsizegrid">
   <div class="ui left icon input">
@@ -60,6 +77,9 @@
   <div class="menu" id="menu">
   <a href="manage-school.php" class="item">Manage Schools</a>
   <a href="add-school.php" class="item">Add a school </a>
+  <?php
+}
+  ?>
   </div>
   </div>
 
@@ -73,20 +93,40 @@
       <a href="add-trainer.php" class="item">Add a Trainer </a>
       <a class="item">Allocate trainer to schools </a>
       <a class="item">Manage content for trainer </a> 
+<?php
+}
+?>
     </div>
   </div>
 
-  <div class="item txtsizegrid">
+  <?php
+$type=$_SESSION['type'];
+switch($type)
+{
+  case 3:
+  case 0:
+?>
+ <div class="item txtsizegrid">
   <div class="ui left icon input">
     <i class="fas fa-child"></i>
-    &nbsp;&nbsp;Student Management
+ &nbsp;&nbsp;Student Management
   </div> 
     <div class="menu" id="menu">
       <a href="manage-student.php" class="item" >Manage Students</a>
       <a href="add-student.php" class="item">Add a student</a>
       <a class="item">Bulk upload student data</a>
+<?php
+}
+?>
+
     </div>
-  </div>
+    </div> 
+  <?php
+$type=$_SESSION['type'];
+switch($type)
+{
+  case 0:
+  ?>
 
   <div class="item txtsizegrid">
   <div class="ui left icon input">
@@ -117,7 +157,4 @@
 <div class="content" id="content" style="width:100em; font-size: 1rem; text-align:center;"> </div>
 </div>
 </body>
-
-
-
 </html>
